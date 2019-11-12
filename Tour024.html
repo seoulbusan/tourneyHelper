@@ -4,29 +4,6 @@
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
-    <!-- Naver webmaster -->
-    <meta name="naver-site-verification" content="9d525993087a57bde4947a2a4a9685ade422fc97"/>
-    <link rel="canonical" href="http://trydcss.netlify.com/index.html">
-    <meta name="description" content="DungeonCrawl StoneSoup, 던전크롤 스톤수프, 통칭 돌죽 은 전세계에 두터운 마니아층을 보유한 턴제 로그라이크 게임입니다.">
-    <meta property="og:type" content="TourneyHelper">
-    <meta property="og:title" content="돌죽 소개 페이지">
-    <meta property="og:description" content="던전크롤 스톤스프를 전세계 게이머들과 함께 즐기세요.">
-    <meta property="og:image" content="https://trydcss.netlify.com/upload/title_white_noise_entering_the_dungeon.png">
-    <meta property="og:url" content="https://trydcss.netlify.com">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="돌죽 소개 페이지">
-    <meta name="twitter:description" content="던전크롤 스톤수프를 전세계 게이머들과 함께 즐기세요.">
-    <meta name="twitter:image" content="https://trydcss.netlify.com/upload/title_white_noise_entering_the_dungeon.png">
-    <meta name="twitter:domain" content="https://trydcss.netlify.com">
-    <meta property="al:ios:url" content="applinks://docs">
-    <meta property="al:ios:app_store_id" content="12345">
-    <meta property="al:ios:app_name" content="App Links">
-    <meta property="al:android:url" content="applinks://docs">
-    <meta property="al:android:app_name" content="App Links">
-    <meta property="al:android:package" content="org.applinks">
-    <meta property="al:web:url" content="http://applinks.org/documentation">
-    
-    
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Site Metas -->
-    <title>Try stonesoup!</title>
+    <title>try stonesoup!</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -66,47 +43,56 @@
         visibility : visible;
     }
     </style>
-<script src="moment.js"></script>
-<script src="moment-timezone-with-data-10-year-range.js"></script>
-    
+
 <script>
-    $('<div id ="tm3"></div>').html("토너먼트 기간 :").appendTo("#bbb").css("color", "white");
-    setInterval(function() {
-    $('#tm').remove();
-    $('#tm2').remove();
-    let now = new Date();
-    let nowA = now.getTimezoneOffset()
-    now = now.getTime();
-    now = now + (nowA * 60000)
-    let startDate = new Date('October 25, 2019 20:00:00');
-    let endDate = new Date('November 10, 2019 20:00:00');
-
-    let delta = (startDate - now) / 1000;
-    if (delta < 0) {delta = 0 };
-    let days = Math.floor(delta / 86400);
-    delta -= days * 86400;
-    let hours = Math.floor(delta / 3600) % 24;
-    delta -= hours * 3600;
-    let minutes = Math.floor(delta / 60) % 60;
-    delta -= minutes * 60;
-    let seconds = Math.floor(delta % 60);
+        // Insert current version to ver.
+        // Insert starting time(UTC) to startDate.
+        // Insert end time(UTC) to endDate.
+        const ver = '0.24';
+        const startDate = new Date('October 25, 2019 20:00:00');
+        const endDate = new Date('November 10, 2019 20:00:00');
     
-    let delta2 = Math.abs(endDate - now) / 1000;
-    if (delta2 < 0) {delta2 = 0 };
-    let days2 = Math.floor(delta2 / 86400);
-    delta2 -= days2 * 86400;
-    let hours2 = Math.floor(delta2 / 3600) % 24;
-    delta2 -= hours2 * 3600;
-    let minutes2 = Math.floor(delta2 / 60) % 60;
-    delta2 -= minutes2 * 60;
-    let seconds2 = Math.floor(delta2 % 60);
-        let st = days+ 'D ' + hours + "H "+ minutes +'M ' + seconds +'S'
-        let en = days2+ 'D ' + hours2 + "H "+ minutes2 +'M ' + seconds2 +'S'
-    $('<div id ="tm"></div>').html("Time remaining to start : " + st).appendTo("#bbb").css("color", "white");
-    $('<div id ="tm2"></div>').html("Time remaining to end : " + en).appendTo("#bbb").css("color", "white");
-    }, 1000);
+        $(document).ready(function () {
+            $("<h2 id='title'></h2>").html(`tournament ${ver} helper`).appendTo("#title");
+            $(`<a href="https://crawl.develz.org/tournament/${ver}/overview.html" class="btn btn-light"></a>`).html("leaderboard").appendTo("#mid");
+            $(`<a href="https://trydcss.netlify.com/tournament" class="btn btn-light"></a>`).html(`information`).appendTo("#mid");
+        });
+        setInterval(function() {
+        $('#tm').remove();
+        $('#tm2').remove();
+        let now = new Date();
+        let nowA = now.getTimezoneOffset()
+        now = now.getTime();
+        now = now + (nowA * 60000)
+        let delta = (startDate - now) / 1000;
+        if (delta < 0) {delta = 0 };
+        let days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+        let hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+        let minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+        let seconds = Math.floor(delta % 60);
+        
+        let delta2 = (endDate - now) / 1000;
+        if (delta2 < 0) {delta2 = 0 };
+        let days2 = Math.floor(delta2 / 86400);
+        delta2 -= days2 * 86400;
+        let hours2 = Math.floor(delta2 / 3600) % 24;
+        delta2 -= hours2 * 3600;
+        let minutes2 = Math.floor(delta2 / 60) % 60;
+        delta2 -= minutes2 * 60;
+        let seconds2 = Math.floor(delta2 % 60);
+            let st = days+ 'D' + hours + "H"+ minutes +'M' + seconds +'S'
+            let en = days2+ 'D' + hours2 + "H"+ minutes2 +'M' + seconds2 +'S'
+            $('<div id ="tm"></div>').html("Time remaining to start : " + st).appendTo("#bbb").css("color", "white");
+            $('<div id ="tm2"></div>').html("Time remaining to end : " + en).appendTo("#bbb").css("color", "white");
+        }, 1000);
+        </script>
 
-    </script>
+
+
+
 </head>
 <body>
 
@@ -147,7 +133,7 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTopMenu" aria-controls="navbarTopMenu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="Tour024.html">Home</a>
+                    <a class="navbar-brand" href="Tour24.html">Home</a>
                     <div class="collapse navbar-collapse" id="navbarTopMenu">
                         <ul class="navbar-nav mr-auto mt-2 mt-md-0">
                             <li><a class="nav-link" href="mailto: hoot0308@gmail.com">Contact</a></li>
@@ -250,28 +236,12 @@ temp = input;
 $('#ccc').empty();
 $('<h1></h1>').html(temp).appendTo("#ccc").css("color", "white");
 temp = temp.toLowerCase();
-$('<a>Scoreboard</a>').attr("href", "https://crawl.develz.org/tournament/0.24/players/"+temp).appendTo("#ccc");
+$('<a>Scoreboard</a>').attr("href", `https://crawl.develz.org/tournament/${ver}/players/`+temp).appendTo("#ccc");
 }
 
 function output(){
 document.getElementById("output").value = temp;
 }
-
-
-</script>
-<script>
-    $(document).ready(function () {
-        $("#button").click(function (){
-            $("html").toggleClass("clicked")
-        });
-    });
-    
-    $('#keyword1').keypress(function(event){
-     if ( event.which == 13 ) {
-         input();
-         return false;
-     }
-});
 </script>
 
 
