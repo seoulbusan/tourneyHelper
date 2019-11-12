@@ -5,6 +5,4 @@ Input your ID into textarea, then you can get a hyperlink to your tourney scoreb
 If you would like to use this for tourney, Change this.
 
 lines 51, 52, 53.
-51 : version
-52 : startDate
-53 : endDate
+version,startDate,endDate
